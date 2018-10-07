@@ -10,7 +10,7 @@
     <meta name="keywords" content="Linux,Command,命令大全,Linux命令手册,ls,显示目录内容列表">
     <title>ls 命令，Linux ls 命令详解：显示目录内容列表 -  Linux 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1532764391876">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1538882024771">
 </head>
 <body>
 <a href="https://github.com/jaywcjlove/linux-command" target="_blank" class="github-corner"> <svg viewBox="0 0 250 250"><!-- kenny wang <wowohoo@qq.com> https://github.com/jaywcjlove --> <title>logo</title> <desc>Linux Command Logo. https://github.com/jaywcjlove</desc><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg> </a>
@@ -42,28 +42,27 @@
 
 <h1 id="ls">ls</h1><p>显示目录内容列表</p>
 <h2 id="补充说明">补充说明</h2><p><strong>ls命令</strong> 用来显示目标列表，在Linux中是使用率较高的命令。ls命令的输出信息可以进行彩色加亮显示，以分区不同类型的文件。</p>
-<h3 id="语法">语法</h3><pre><code>ls（选项）（参数）
-</code></pre><h3 id="选项">选项</h3><pre><code>
-<span class="hljs-_">-a</span>, --all     不隐藏任何以. 开始的项目
--A, --almost-all    列出除. 及.. 以外的任何项目
-    --author      与<span class="hljs-_">-l</span> 同时使用时列出每个文件的作者
+<h3 id="语法">语法</h3><pre><code>ls（选项）（参数）</code></pre><h3 id="选项">选项</h3><pre><code>
+-a, --all     不隐藏任何以. 开始的项目
+-A, --almost-all    列出除. 及<span class="token punctuation">..</span> 以外的任何项目
+    --author      与-l 同时使用时列出每个文件的作者
 -b, --escape      以八进制溢出序列表示不可打印的字符
-    --block-size=SIZE      scale sizes by SIZE before printing them; e.g.,
-                             <span class="hljs-string">'--block-size=M'</span> prints sizes <span class="hljs-keyword">in</span> units of
-                             1,048,576 bytes; see SIZE format below
--B, --ignore-backups       <span class="hljs-keyword">do</span> not list implied entries ending with ~
--c                         with <span class="hljs-_">-lt</span>: sort by, and show, ctime (time of last
-                             modification of file status information);
-                             with <span class="hljs-_">-l</span>: show ctime and sort by name;
-                             otherwise: sort by ctime, newest first
+    --block-size<span class="token operator">=</span>SIZE      scale sizes by SIZE before printing them<span class="token punctuation">;</span> e.g.,
+                             <span class="token string">'--block-size=M'</span> prints sizes <span class="token keyword">in</span> <span class="token function">units</span> of
+                             1,048,576 bytes<span class="token punctuation">;</span> see SIZE <span class="token function">format</span> below
+-B, --ignore-backups       <span class="token keyword">do</span> not list implied entries ending with ~
+-c                         with -lt: <span class="token function">sort</span> by, and show, ctime <span class="token punctuation">(</span>time of last
+                             modification of <span class="token function">file</span> status information<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                             with -l: show ctime and <span class="token function">sort</span> by name<span class="token punctuation">;</span>
+                             otherwise: <span class="token function">sort</span> by ctime, newest first
 -C                         list entries by columns
-    --color[=WHEN]         colorize the output; WHEN can be <span class="hljs-string">'never'</span>, <span class="hljs-string">'auto'</span>,
-                             or <span class="hljs-string">'always'</span> (the default); more info below
-<span class="hljs-_">-d</span>, --directory            list directories themselves, not their contents
--D, --dired                generate output designed <span class="hljs-keyword">for</span> Emacs<span class="hljs-string">' dired mode
+    --color<span class="token punctuation">[</span><span class="token operator">=</span>WHEN<span class="token punctuation">]</span>         colorize the output<span class="token punctuation">;</span> WHEN can be <span class="token string">'never'</span>, <span class="token string">'auto'</span>,
+                             or <span class="token string">'always'</span> <span class="token punctuation">(</span>the default<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token function">more</span> info below
+-d, --directory            list directories themselves, not their contents
+-D, --dired                generate output designed <span class="token keyword">for</span> Emacs<span class="token string">' dired mode
 -f                         do not sort, enable -aU, disable -ls --color
--F, --classify             append indicator (one of */=&gt;@|) to entries
-    --file-type            likewise, except do not append '</span>*<span class="hljs-string">'
+-F, --classify             append indicator (one of */=>@|) to entries
+    --file-type            likewise, except do not append '</span>*<span class="token string">'
     --format=WORD          across -x, commas -m, horizontal -x, long -l,
                              single-column -1, verbose -l, vertical -C
     --full-time            like -l --time-style=full-iso
@@ -99,7 +98,7 @@
 -p,  --indicator-style=slash  对目录加上表示符号"/"
 -q, --hide-control-chars   print ? instead of nongraphic characters
     --show-control-chars   show nongraphic characters as-is (the default,
-                             unless program is '</span>ls<span class="hljs-string">' and output is a terminal)
+                             unless program is '</span><span class="token function">ls</span><span class="token string">' and output is a terminal)
 -Q, --quote-name           enclose entry names in double quotes
     --quoting-style=WORD   use quoting style WORD for entry names:
                              literal, locale, shell, shell-always, c, escape
@@ -115,73 +114,66 @@
                              as sort key if --sort=time
     --time-style=STYLE     with -l, show times using style STYLE:
                              full-iso, long-iso, iso, locale, or +FORMAT;
-                             FORMAT is interpreted like in '</span>date<span class="hljs-string">'; if FORMAT
-                             is FORMAT1&lt;newline&gt;FORMAT2, then FORMAT1 applies
+                             FORMAT is interpreted like in '</span><span class="token function">date</span><span class="token string">'; if FORMAT
+                             is FORMAT1&lt;newline>FORMAT2, then FORMAT1 applies
                              to non-recent files and FORMAT2 to recent files;
-                             if STYLE is prefixed with '</span>posix-<span class="hljs-string">', STYLE
+                             if STYLE is prefixed with '</span>posix-', STYLE
                              takes effect only outside the POSIX locale
--t                         sort by modification time, newest first
--T, --tabsize=COLS         assume tab stops at each COLS instead of 8
--u                         with -lt: sort by, and show, access time;
-                             with -l: show access time and sort by name;
-                             otherwise: sort by access time
--U                         do not sort; list entries in directory order
--v                         natural sort of (version) numbers within text
--w, --width=COLS           assume screen width instead of current value
+-t                         <span class="token function">sort</span> by modification time, newest first
+-T, --tabsize<span class="token operator">=</span>COLS         assume tab stops at each COLS instead of 8
+-u                         with -lt: <span class="token function">sort</span> by, and show, access <span class="token function">time</span><span class="token punctuation">;</span>
+                             with -l: show access <span class="token function">time</span> and <span class="token function">sort</span> by name<span class="token punctuation">;</span>
+                             otherwise: <span class="token function">sort</span> by access <span class="token function">time</span>
+-U                         <span class="token keyword">do</span> not <span class="token function">sort</span><span class="token punctuation">;</span> list entries <span class="token keyword">in</span> directory order
+-v                         natural <span class="token function">sort</span> of <span class="token punctuation">(</span>version<span class="token punctuation">)</span> numbers within text
+-w, --width<span class="token operator">=</span>COLS           assume <span class="token function">screen</span> width instead of current value
 -x                         list entries by lines instead of by columns
--X                         sort alphabetically by entry extension
--1                         list one file per line
+-X                         <span class="token function">sort</span> alphabetically by entry extension
+-1                         list one <span class="token function">file</span> per line
 
 SELinux options:
 
 --lcontext                 Display security context.   Enable -l. Lines
-                           will probably be too wide for most displays.
--Z, --context              Display security context so it fits on most
+                           will probably be too wide <span class="token keyword">for</span> <span class="token function">most</span> displays.
+-Z, --context              Display security context so it fits on <span class="token function">most</span>
                            displays.  Displays only mode, user, group,
-                           security context and file name.
---scontext                 Display only security context and file name.
+                           security context and <span class="token function">file</span> name.
+--scontext                 Display only security context and <span class="token function">file</span> name.
     --help    显示此帮助信息并退出
-    --version   显示版本信息并退出</span>
-</code></pre><h3 id="参数">参数</h3><p>目录：指定要显示列表的目录，也可以是具体的文件。</p>
-<h3 id="实例">实例</h3><pre><code class="lang-bash">$ ls       <span class="hljs-comment"># 仅列出当前目录可见文件</span>
-$ ls <span class="hljs-_">-l</span>    <span class="hljs-comment"># 列出当前目录可见文件详细信息</span>
-$ ls -hl   <span class="hljs-comment"># 列出详细信息并以可读大小显示文件大小</span>
-$ ls -al   <span class="hljs-comment"># 列出所有文件（包括隐藏）的详细信息</span>
-</code></pre>
+    --version   显示版本信息并退出</code></pre><h3 id="参数">参数</h3><p>目录：指定要显示列表的目录，也可以是具体的文件。</p>
+<h3 id="实例">实例</h3><pre><code class="language-bash">$ ls       # 仅列出当前目录可见文件
+$ ls <span class="token operator">-</span>l    # 列出当前目录可见文件详细信息
+$ ls <span class="token operator">-</span>hl   # 列出详细信息并以可读大小显示文件大小
+$ ls <span class="token operator">-</span>al   # 列出所有文件（包括隐藏）的详细信息</code></pre>
 <p>显示当前目录下包括影藏文件在内的所有文件列表</p>
-<pre><code>[root@localhost ~]<span class="hljs-comment"># ls -a</span>
-.   anaconda-ks.cfg  .bash_logout   .bashrc  install.log         .mysql_history  satools  .tcshrc   .vimrc
-..  .bash_history    .bash_profile  .cshrc   install.log.syslog  .rnd            .ssh     .viminfo
-</code></pre><p>输出长格式列表</p>
-<pre><code>[root@localhost ~]<span class="hljs-comment"># ls -1</span>
+<pre><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># ls -a</span>
+<span class="token keyword">.</span>   anaconda-ks.cfg  .bash_logout   .bashrc  install.log         .mysql_history  satools  .tcshrc   .vimrc
+<span class="token punctuation">..</span>  .bash_history    .bash_profile  .cshrc   install.log.syslog  .rnd            .ssh     .viminfo</code></pre><p>输出长格式列表</p>
+<pre><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># ls -1</span>
 
 anaconda-ks.cfg
 install.log
 install.log.syslog
-satools
-</code></pre><p>显示文件的inode信息</p>
+satools</code></pre><p>显示文件的inode信息</p>
 <p>索引节点（index inode简称为“inode”）是Linux中一个特殊的概念，具有相同的索引节点号的两个文本本质上是同一个文件（除文件名不同外）。</p>
-<pre><code>[root@localhost ~]<span class="hljs-comment"># ls -i -l anaconda-ks.cfg install.log</span>
+<pre><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># ls -i -l anaconda-ks.cfg install.log</span>
 2345481 -rw------- 1 root root   859 Jun 11 22:49 anaconda-ks.cfg
-2345474 -rw-r--r-- 1 root root 13837 Jun 11 22:49 install.log
-</code></pre><p>水平输出文件列表</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -m</span>
+2345474 -rw-r--r-- 1 root root 13837 Jun 11 22:49 install.log</code></pre><p>水平输出文件列表</p>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -m</span>
 
-bin, boot, data, dev, etc, home, lib, lost+found, media, misc, mnt, opt, proc, root, sbin, selinux, srv, sys, tmp, usr, var
-</code></pre><p>修改最后一次编辑的文件</p>
+bin, boot, data, dev, etc, home, lib, lost+found, media, misc, mnt, opt, proc, root, sbin, selinux, srv, sys, tmp, usr, var</code></pre><p>修改最后一次编辑的文件</p>
 <p>最近修改的文件显示在最上面。</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -t</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -t</span>
 
-tmp  root  etc  dev  lib  boot  sys  proc  data  home  bin  sbin  usr  var  lost+found  media  mnt  opt  selinux  srv  misc
-</code></pre><p>显示递归文件</p>
-<pre><code>[root@localhost ~]<span class="hljs-comment"># ls -R</span>
+tmp  root  etc  dev  lib  boot  sys  proc  data  home  bin  sbin  usr  var  lost+found  media  mnt  opt  selinux  srv  misc</code></pre><p>显示递归文件</p>
+<pre><code><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># ls -R</span>
 .:
 anaconda-ks.cfg  install.log  install.log.syslog  satools
 
 ./satools:
 black.txt  freemem.sh  iptables.sh  lnmp.sh  mysql  php502_check.sh  ssh_safe.sh
 </code></pre><p>打印文件的UID和GID</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -n</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -n</span>
 
 total 254
 drwxr-xr-x   2 0 0  4096 Jun 12 04:03 bin
@@ -206,7 +198,7 @@ drwxrwxrwt   3 0 0 98304 Oct 16 08:45 tmp
 drwxr-xr-x  13 0 0  4096 Jun 11 23:38 usr
 drwxr-xr-x  19 0 0  4096 Jun 11 23:38 var
 </code></pre><p>列出文件和文件夹的详细信息</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -l</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -l</span>
 
 total 254
 drwxr-xr-x   2 root root  4096 Jun 12 04:03 bin
@@ -231,7 +223,7 @@ drwxrwxrwt   3 root root 98304 Oct 16 08:48 tmp
 drwxr-xr-x  13 root root  4096 Jun 11 23:38 usr
 drwxr-xr-x  19 root root  4096 Jun 11 23:38 var
 </code></pre><p>列出可读文件和文件夹详细信息</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -lh</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -lh</span>
 
 total 254K
 drwxr-xr-x   2 root root 4.0K Jun 12 04:03 bin
@@ -256,11 +248,11 @@ drwxrwxrwt   3 root root  96K Oct 16 08:49 tmp
 drwxr-xr-x  13 root root 4.0K Jun 11 23:38 usr
 drwxr-xr-x  19 root root 4.0K Jun 11 23:38 var
 </code></pre><p>显示文件夹信息</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -ld /etc/</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -ld /etc/</span>
 
 drwxr-xr-x 75 root root 4096 Oct 16 04:02 /etc/
 </code></pre><p>按时间列出文件和文件夹详细信息</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -lt</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -lt</span>
 
 total 254
 drwxrwxrwt   3 root root 98304 Oct 16 08:53 tmp
@@ -285,7 +277,7 @@ drwxr-xr-x   2 root root  4096 May 11  2011 selinux
 drwxr-xr-x   2 root root  4096 May 11  2011 srv
 drwxr-xr-x   2 root root  4096 Nov  8  2010 misc
 </code></pre><p>按修改时间列出文件和文件夹详细信息</p>
-<pre><code>[root@localhost /]<span class="hljs-comment"># ls -ltr</span>
+<pre><code><span class="token punctuation">[</span>root@localhost /<span class="token punctuation">]</span><span class="token comment"># ls -ltr</span>
 
 total 254
 drwxr-xr-x   2 root root  4096 Nov  8  2010 misc
@@ -310,14 +302,13 @@ drwxr-x---   4 root root  4096 Oct 15 14:43 root
 drwxr-xr-x  75 root root  4096 Oct 16 04:02 etc
 drwxrwxrwt   3 root root 98304 Oct 16 08:54 tmp
 </code></pre><p>按照特殊字符对文件进行分类</p>
-<pre><code>[root@localhost nginx-1.2.1]<span class="hljs-comment"># ls -F</span>
+<pre><code><span class="token punctuation">[</span>root@localhost nginx-1.2.1<span class="token punctuation">]</span><span class="token comment"># ls -F</span>
 
 auto/  CHANGES  CHANGES.ru  conf/  configure*  contrib/  html/  LICENSE  Makefile  man/  objs/  README  src/
 </code></pre><p>列出文件并标记颜色分类</p>
-<pre><code>[root@localhost nginx-1.2.1]<span class="hljs-comment"># ls --color=auto</span>
+<pre><code><span class="token punctuation">[</span>root@localhost nginx-1.2.1<span class="token punctuation">]</span><span class="token comment"># ls --color=auto</span>
 
-auto  CHANGES  CHANGES.ru  conf  configure  contrib  html  LICENSE  Makefile  man  objs  README  src
-</code></pre><!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+auto  CHANGES  CHANGES.ru  conf  configure  contrib  html  LICENSE  Makefile  <span class="token function">man</span>  objs  README  src</code></pre><!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
 
 </div>
 
@@ -325,7 +316,7 @@ auto  CHANGES  CHANGES.ru  conf  configure  contrib  html  LICENSE  Makefile  ma
   收藏本站请使用Ctrl+D或者Command+d
   <br />
   <a target="_blank" href="https://github.com/jaywcjlove/linux-command/new/master/command">添加命令</a> |
-  <a href="hot.html">命令列表</a> |
+  <a href="../hot.html">命令列表</a> |
   <a href="https://github.com/jaywcjlove/oscnews">Chrome 插件</a>
   <br> 共搜集到
   <span id="commands_info">
@@ -334,7 +325,7 @@ auto  CHANGES  CHANGES.ru  conf  configure  contrib  html  LICENSE  Makefile  ma
 </div>
 <script>
 var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a542c0213a9aa8ae29fccdc8a18b91ef"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
-<script type="text/javascript" src="../js/dt.js?v=1532764391877"></script>
-<script type="text/javascript" src="../js/index.js?v=1532764391877"></script>
+<script type="text/javascript" src="../js/dt.js?v=1538882024771"></script>
+<script type="text/javascript" src="../js/index.js?v=1538882024771"></script>
 </body>
 </html>

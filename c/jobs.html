@@ -10,7 +10,7 @@
     <meta name="keywords" content="Linux,Command,命令大全,Linux命令手册,jobs,显示Linux中的任务列表及任务状态">
     <title>jobs 命令，Linux jobs 命令详解：显示Linux中的任务列表及任务状态 -  Linux 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1532764392451">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1538882024604">
 </head>
 <body>
 <a href="https://github.com/jaywcjlove/linux-command" target="_blank" class="github-corner"> <svg viewBox="0 0 250 250"><!-- kenny wang <wowohoo@qq.com> https://github.com/jaywcjlove --> <title>logo</title> <desc>Linux Command Logo. https://github.com/jaywcjlove</desc><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg> </a>
@@ -43,18 +43,14 @@
 <h1 id="jobs">jobs</h1><p>显示Linux中的任务列表及任务状态</p>
 <h2 id="补充说明">补充说明</h2><p><strong>jobs命令</strong> 用于显示Linux中的任务列表及任务状态，包括后台运行的任务。该命令可以显示任务号及其对应的进程号。其中，任务号是以普通用户的角度进行的，而进程号则是从系统管理员的角度来看的。一个任务可以对应于一个或者多个进程号。</p>
 <p>在Linux系统中执行某些操作时候，有时需要将当前任务暂停调至后台，或有时须将后台暂停的任务重启开启并调至前台，这一序列的操作将会使用到 jobs、bg、和 fg 三个命令以及两个快捷键来完成。</p>
-<h3 id="语法">语法</h3><pre><code><span class="hljs-built_in">jobs</span>(选项)(参数)
-</code></pre><h3 id="选项">选项</h3><pre><code><span class="hljs-_">-l</span>：显示进程号；
+<h3 id="语法">语法</h3><pre><code>jobs<span class="token punctuation">(</span>选项<span class="token punctuation">)</span><span class="token punctuation">(</span>参数<span class="token punctuation">)</span></code></pre><h3 id="选项">选项</h3><pre><code>-l：显示进程号；
 -p：仅任务对应的显示进程号；
 -n：显示任务状态的变化；
 -r：仅输出运行状态（running）的任务；
-<span class="hljs-_">-s</span>：仅输出停止状态（stoped）的任务。
-</code></pre><h3 id="参数">参数</h3><p>任务标识号：指定要显示的任务识别号。</p>
+-s：仅输出停止状态（stoped）的任务。</code></pre><h3 id="参数">参数</h3><p>任务标识号：指定要显示的任务识别号。</p>
 <h3 id="实例">实例</h3><p>使用jobs命令显示当前系统的任务列表，输入如下命令：</p>
-<pre><code><span class="hljs-built_in">jobs</span> <span class="hljs-_">-l</span>               <span class="hljs-comment">#显示当前系统的任务列表</span>
-</code></pre><p>上面的命令执行后，将显示出当前系统下的任务列表信息，具体如下所示：</p>
-<pre><code>[1] + 1903 运行中          find / -name password &amp;
-</code></pre><p>注意：要得到以上输出信息，必须在执行jobs命令之前执行命令<code>find / -name password &amp;</code>。否则，执行jobs命令不会显示任何信息。</p>
+<pre><code><span class="token function">jobs</span> -l               <span class="token comment">#显示当前系统的任务列表</span></code></pre><p>上面的命令执行后，将显示出当前系统下的任务列表信息，具体如下所示：</p>
+<pre><code><span class="token punctuation">[</span>1<span class="token punctuation">]</span> + 1903 运行中          <span class="token function">find</span> / -name password <span class="token operator">&amp;</span></code></pre><p>注意：要得到以上输出信息，必须在执行jobs命令之前执行命令<code>find / -name password &amp;</code>。否则，执行jobs命令不会显示任何信息。</p>
 <p>其中，输出信息的第一列表示任务编号，第二列表示任务所对应的进程号，第三列表示任务的运行状态，第四列表示启动任务的命令。</p>
 <!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
 </div>
@@ -63,7 +59,7 @@
   收藏本站请使用Ctrl+D或者Command+d
   <br />
   <a target="_blank" href="https://github.com/jaywcjlove/linux-command/new/master/command">添加命令</a> |
-  <a href="hot.html">命令列表</a> |
+  <a href="../hot.html">命令列表</a> |
   <a href="https://github.com/jaywcjlove/oscnews">Chrome 插件</a>
   <br> 共搜集到
   <span id="commands_info">
@@ -72,7 +68,7 @@
 </div>
 <script>
 var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a542c0213a9aa8ae29fccdc8a18b91ef"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
-<script type="text/javascript" src="../js/dt.js?v=1532764392452"></script>
-<script type="text/javascript" src="../js/index.js?v=1532764392452"></script>
+<script type="text/javascript" src="../js/dt.js?v=1538882024605"></script>
+<script type="text/javascript" src="../js/index.js?v=1538882024605"></script>
 </body>
 </html>

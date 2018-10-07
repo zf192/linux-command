@@ -10,7 +10,7 @@
     <meta name="keywords" content="Linux,Command,命令大全,Linux命令手册,grep,强大的文本搜索工具">
     <title>grep 命令，Linux grep 命令详解：强大的文本搜索工具 -  Linux 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1532764392443">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1538882024314">
 </head>
 <body>
 <a href="https://github.com/jaywcjlove/linux-command" target="_blank" class="github-corner"> <svg viewBox="0 0 250 250"><!-- kenny wang <wowohoo@qq.com> https://github.com/jaywcjlove --> <title>logo</title> <desc>Linux Command Logo. https://github.com/jaywcjlove</desc><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg> </a>
@@ -42,168 +42,42 @@
 
 <h1 id="grep">grep</h1><p>强大的文本搜索工具</p>
 <h2 id="补充说明">补充说明</h2><p><strong>grep</strong> （global search regular expression(RE) and print out the line，全面搜索正则表达式并把行打印出来）是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来。用于过滤/搜索的特定字符。可使用正则表达式能多种命令配合使用，使用上十分灵活。</p>
-<h3 id="选项">选项</h3><pre><code class="lang-bash"><span class="hljs-_">-a</span> --text  <span class="hljs-comment"># 不要忽略二进制数据。</span>
--A &lt;显示行数&gt;   --after-context=&lt;显示行数&gt;   <span class="hljs-comment"># 除了显示符合范本样式的那一行之外，并显示该行之后的内容。</span>
--b --byte-offset                           <span class="hljs-comment"># 在显示符合范本样式的那一行之外，并显示该行之前的内容。</span>
--B&lt;显示行数&gt;   --before-context=&lt;显示行数&gt;   <span class="hljs-comment"># 除了显示符合样式的那一行之外，并显示该行之前的内容。</span>
--c --count    <span class="hljs-comment"># 计算符合范本样式的列数。</span>
--C&lt;显示行数&gt; --context=&lt;显示行数&gt;或-&lt;显示行数&gt; <span class="hljs-comment"># 除了显示符合范本样式的那一列之外，并显示该列之前后的内容。</span>
-<span class="hljs-_">-d</span>&lt;进行动作&gt; --directories=&lt;动作&gt;  <span class="hljs-comment"># 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作。</span>
-<span class="hljs-_">-e</span>&lt;范本样式&gt; --regexp=&lt;范本样式&gt;   <span class="hljs-comment"># 指定字符串作为查找文件内容的范本样式。</span>
--E --extended-regexp             <span class="hljs-comment"># 将范本样式为延伸的普通表示法来使用，意味着使用能使用扩展正则表达式。</span>
-<span class="hljs-_">-f</span>&lt;范本文件&gt; --file=&lt;规则文件&gt;     <span class="hljs-comment"># 指定范本文件，其内容有一个或多个范本样式，让grep查找符合范本条件的文件内容，格式为每一列的范本样式。</span>
--F --fixed-regexp   <span class="hljs-comment"># 将范本样式视为固定字符串的列表。</span>
--G --basic-regexp   <span class="hljs-comment"># 将范本样式视为普通的表示法来使用。</span>
--h --no-filename    <span class="hljs-comment"># 在显示符合范本样式的那一列之前，不标示该列所属的文件名称。</span>
--H --with-filename  <span class="hljs-comment"># 在显示符合范本样式的那一列之前，标示该列的文件名称。</span>
--i --ignore-case    <span class="hljs-comment"># 忽略字符大小写的差别。</span>
-<span class="hljs-_">-l</span> --file-with-matches   <span class="hljs-comment"># 列出文件内容符合指定的范本样式的文件名称。</span>
--L --files-without-match <span class="hljs-comment"># 列出文件内容不符合指定的范本样式的文件名称。</span>
--n --line-number         <span class="hljs-comment"># 在显示符合范本样式的那一列之前，标示出该列的编号。</span>
--q --quiet或--silent     <span class="hljs-comment"># 不显示任何信息。</span>
--R/-r  --recursive       <span class="hljs-comment"># 此参数的效果和指定“-d recurse”参数相同。</span>
-<span class="hljs-_">-s</span> --no-messages  <span class="hljs-comment"># 不显示错误信息。</span>
--v --revert-match <span class="hljs-comment"># 反转查找。</span>
--V --version      <span class="hljs-comment"># 显示版本信息。   </span>
--w --word-regexp  <span class="hljs-comment"># 只显示全字符合的列。</span>
--x --line-regexp  <span class="hljs-comment"># 只显示全列符合的列。</span>
--y <span class="hljs-comment"># 此参数效果跟“-i”相同。</span>
--o <span class="hljs-comment"># 只输出文件中匹配到的部分。</span>
-</code></pre>
-<h3 id="规则表达式">规则表达式</h3><pre><code class="lang-bash">^    <span class="hljs-comment"># 锚定行的开始 如：'^grep'匹配所有以grep开头的行。    </span>
-$    <span class="hljs-comment"># 锚定行的结束 如：'grep$'匹配所有以grep结尾的行。    </span>
-.    <span class="hljs-comment"># 匹配一个非换行符的字符 如：'gr.p'匹配gr后接一个任意字符，然后是p。    </span>
-*    <span class="hljs-comment"># 匹配零个或多个先前字符 如：'*grep'匹配所有一个或多个空格后紧跟grep的行。    </span>
-.*   <span class="hljs-comment"># 一起用代表任意字符。   </span>
-[]   <span class="hljs-comment"># 匹配一个指定范围内的字符，如'[Gg]rep'匹配Grep和grep。    </span>
-[^]  <span class="hljs-comment"># 匹配一个不在指定范围内的字符，如：'[^A-FH-Z]rep'匹配不包含A-R和T-Z的一个字母开头，紧跟rep的行。    </span>
-\(..\)  <span class="hljs-comment"># 标记匹配字符，如'\(love\)'，love被标记为1。    </span>
-\&lt;      <span class="hljs-comment"># 锚定单词的开始，如:'\&lt;grep'匹配包含以grep开头的单词的行。    </span>
-\&gt;      <span class="hljs-comment"># 锚定单词的结束，如'grep\&gt;'匹配包含以grep结尾的单词的行。    </span>
-x\{m\}  <span class="hljs-comment"># 重复字符x，m次，如：'0\{5\}'匹配包含5个o的行。    </span>
-x\{m,\}   <span class="hljs-comment"># 重复字符x,至少m次，如：'o\{5,\}'匹配至少有5个o的行。    </span>
-x\{m,n\}  <span class="hljs-comment"># 重复字符x，至少m次，不多于n次，如：'o\{5,10\}'匹配5--10个o的行。   </span>
-\w    <span class="hljs-comment"># 匹配文字和数字字符，也就是[A-Za-z0-9]，如：'G\w*p'匹配以G后跟零个或多个文字或数字字符，然后是p。   </span>
-\W    <span class="hljs-comment"># \w的反置形式，匹配一个或多个非单词字符，如点号句号等。   </span>
-\b    <span class="hljs-comment"># 单词锁定符，如: '\bgrep\b'只匹配grep。</span>
-</code></pre>
-<h2 id="grep命令常见用法">grep命令常见用法</h2><p>在文件中搜索一个单词，命令会返回一个包含 <strong>“match_pattern”</strong> 的文本行：</p>
-<pre><code>grep match_pattern file_name
-grep <span class="hljs-string">"match_pattern"</span> file_name
-</code></pre><p>在多个文件中查找：</p>
-<pre><code>grep <span class="hljs-string">"match_pattern"</span> file_1 file_2 file_3 ...
-</code></pre><p>输出除之外的所有行  <strong>-v</strong>  选项：</p>
-<pre><code>grep -v <span class="hljs-string">"match_pattern"</span> file_name
-</code></pre><p>标记匹配颜色  <strong>--color=auto</strong>  选项：</p>
-<pre><code>grep <span class="hljs-string">"match_pattern"</span> file_name --color=auto
-</code></pre><p>使用正则表达式  <strong>-E</strong>  选项：</p>
-<pre><code>grep -E <span class="hljs-string">"[1-9]+"</span>
-或
-egrep <span class="hljs-string">"[1-9]+"</span>
-</code></pre><p>只输出文件中匹配到的部分  <strong>-o</strong>  选项：</p>
-<pre><code><span class="hljs-built_in">echo</span> this is a <span class="hljs-built_in">test</span> line. | grep -o -E <span class="hljs-string">"[a-z]+\."</span>
-line.
-
-<span class="hljs-built_in">echo</span> this is a <span class="hljs-built_in">test</span> line. | egrep -o <span class="hljs-string">"[a-z]+\."</span>
-line.
-</code></pre><p>统计文件或者文本中包含匹配字符串的行数  <strong>-c</strong>  选项：</p>
-<pre><code>grep -c <span class="hljs-string">"text"</span> file_name
-</code></pre><p>输出包含匹配字符串的行数  <strong>-n</strong>  选项：</p>
-<pre><code>grep <span class="hljs-string">"text"</span> -n file_name
-或
-cat file_name | grep <span class="hljs-string">"text"</span> -n
-
-<span class="hljs-comment">#多个文件</span>
-grep <span class="hljs-string">"text"</span> -n file_1 file_2
-</code></pre><p>打印样式匹配所位于的字符或字节偏移：</p>
-<pre><code><span class="hljs-built_in">echo</span> gun is not unix | grep -b -o <span class="hljs-string">"not"</span>
-7:not
-
-<span class="hljs-comment">#一行中字符串的字符便宜是从该行的第一个字符开始计算，起始值为0。选项  **-b -o**  一般总是配合使用。</span>
-</code></pre><p>搜索多个文件并查找匹配文本在哪些文件中：</p>
-<pre><code>grep <span class="hljs-_">-l</span> <span class="hljs-string">"text"</span> file1 file2 file3...
-</code></pre><h3 id="grep递归搜索文件">grep递归搜索文件</h3><p>在多级目录中对文本进行递归搜索：</p>
-<pre><code>grep <span class="hljs-string">"text"</span> . -r -n
-<span class="hljs-comment"># .表示当前目录。</span>
-</code></pre><p>忽略匹配样式中的字符大小写：</p>
-<pre><code><span class="hljs-built_in">echo</span> <span class="hljs-string">"hello world"</span> | grep -i <span class="hljs-string">"HELLO"</span>
-hello
-</code></pre><p>选项  <strong>-e</strong>  制动多个匹配样式：</p>
-<pre><code><span class="hljs-built_in">echo</span> this is a text line | grep <span class="hljs-_">-e</span> <span class="hljs-string">"is"</span> <span class="hljs-_">-e</span> <span class="hljs-string">"line"</span> -o
-is
-line
-
-<span class="hljs-comment">#也可以使用 **-f** 选项来匹配多个样式，在样式文件中逐行写出需要匹配的字符。</span>
-cat patfile
-aaa
-bbb
-
-<span class="hljs-built_in">echo</span> aaa bbb ccc ddd eee | grep <span class="hljs-_">-f</span> patfile -o
-</code></pre><p>在grep搜索结果中包括或者排除指定文件：</p>
-<pre><code><span class="hljs-comment">#只在目录中所有的.php和.html文件中递归搜索字符"main()"</span>
-grep <span class="hljs-string">"main()"</span> . -r --include *.{php,html}
-
-<span class="hljs-comment">#在搜索结果中排除所有README文件</span>
-grep <span class="hljs-string">"main()"</span> . -r --exclude <span class="hljs-string">"README"</span>
-
-<span class="hljs-comment">#在搜索结果中排除filelist文件列表里的文件</span>
-grep <span class="hljs-string">"main()"</span> . -r --exclude-from filelist
-</code></pre><p>使用0值字节后缀的grep与xargs：</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># 测试文件：</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"aaa"</span> &gt; file1
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"bbb"</span> &gt; file2
-<span class="hljs-built_in">echo</span> <span class="hljs-string">"aaa"</span> &gt; file3
-
-grep <span class="hljs-string">"aaa"</span> file* <span class="hljs-_">-l</span>Z | xargs -0 rm
-
-<span class="hljs-comment">#执行后会删除file1和file3，grep输出用-Z选项来指定以0值字节作为终结符文件名（\0），xargs -0 读取输入并用0值字节终结符分隔文件名，然后删除匹配文件，-Z通常和-l结合使用。</span>
-</code></pre>
-<p>grep静默输出：</p>
-<pre><code class="lang-bash">grep -q <span class="hljs-string">"test"</span> filename
-<span class="hljs-comment"># 不会输出任何信息，如果命令运行成功返回0，失败则返回非0值。一般用于条件测试。</span>
-</code></pre>
-<p>打印出匹配文本之前或者之后的行：</p>
-<pre><code class="lang-bash"><span class="hljs-comment"># 显示匹配某个结果之后的3行，使用 -A 选项：</span>
-seq 10 | grep <span class="hljs-string">"5"</span> -A 3
-5
-6
-7
-8
-
-<span class="hljs-comment"># 显示匹配某个结果之前的3行，使用 -B 选项：</span>
-seq 10 | grep <span class="hljs-string">"5"</span> -B 3
-2
-3
-4
-5
-
-<span class="hljs-comment"># 显示匹配某个结果的前三行和后三行，使用 -C 选项：</span>
-seq 10 | grep <span class="hljs-string">"5"</span> -C 3
-2
-3
-4
-5
-6
-7
-8
-
-<span class="hljs-comment"># 如果匹配结果有多个，会用“--”作为各匹配结果之间的分隔符：</span>
-<span class="hljs-built_in">echo</span> <span class="hljs-_">-e</span> <span class="hljs-string">"a\nb\nc\na\nb\nc"</span> | grep a -A 1
-a
-b
---
-a
-b
-</code></pre>
-<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
-
+<h3 id="选项">选项</h3><pre><code class="language-bash"><span class="token operator">-</span>a <span class="token operator">--</span>text  # 不要忽略二进制数据。
+<span class="token operator">-</span>A <span class="token operator">&lt;</span>显示行数<span class="token operator">></span>   <span class="token operator">--</span>after<span class="token operator">-</span>context<span class="token operator">=</span><span class="token operator">&lt;</span>显示行数<span class="token operator">></span>   # 除了显示符合范本样式的那一行之外，并显示该行之后的内容。
+<span class="token operator">-</span>b <span class="token operator">--</span>byte<span class="token operator">-</span>offset                           # 在显示符合范本样式的那一行之外，并显示该行之前的内容。
+<span class="token operator">-</span>B<span class="token operator">&lt;</span>显示行数<span class="token operator">></span>   <span class="token operator">--</span>before<span class="token operator">-</span>context<span class="token operator">=</span><span class="token operator">&lt;</span>显示行数<span class="token operator">></span>   # 除了显示符合样式的那一行之外，并显示该行之前的内容。
+<span class="token operator">-</span>c <span class="token operator">--</span>count    # 计算符合范本样式的列数。
+<span class="token operator">-</span>C<span class="token operator">&lt;</span>显示行数<span class="token operator">></span> <span class="token operator">--</span>context<span class="token operator">=</span><span class="token operator">&lt;</span>显示行数<span class="token operator">></span>或<span class="token operator">-</span><span class="token operator">&lt;</span>显示行数<span class="token operator">></span> # 除了显示符合范本样式的那一列之外，并显示该列之前后的内容。
+<span class="token operator">-</span>d<span class="token operator">&lt;</span>进行动作<span class="token operator">></span> <span class="token operator">--</span>directories<span class="token operator">=</span><span class="token operator">&lt;</span>动作<span class="token operator">></span>  # 当指定要查找的是目录而非文件时，必须使用这项参数，否则grep命令将回报信息并停止动作。
+<span class="token operator">-</span>e<span class="token operator">&lt;</span>范本样式<span class="token operator">></span> <span class="token operator">--</span>regexp<span class="token operator">=</span><span class="token operator">&lt;</span>范本样式<span class="token operator">></span>   # 指定字符串作为查找文件内容的范本样式。
+<span class="token operator">-</span>E <span class="token operator">--</span>extended<span class="token operator">-</span>regexp             # 将范本样式为延伸的普通表示法来使用，意味着使用能使用扩展正则表达式。
+<span class="token operator">-</span>f<span class="token operator">&lt;</span>范本文件<span class="token operator">></span> <span class="token operator">--</span>file<span class="token operator">=</span><span class="token operator">&lt;</span>规则文件<span class="token operator">></span>     # 指定范本文件，其内容有一个或多个范本样式，让grep查找符合范本条件的文件内容，格式为每一列的范本样式。
+<span class="token operator">-</span>F <span class="token operator">--</span>fixed<span class="token operator">-</span>regexp   # 将范本样式视为固定字符串的列表。
+<span class="token operator">-</span>G <span class="token operator">--</span>basic<span class="token operator">-</span>regexp   # 将范本样式视为普通的表示法来使用。
+<span class="token operator">-</span>h <span class="token operator">--</span>no<span class="token operator">-</span>filename    # 在显示符合范本样式的那一列之前，不标示该列所属的文件名称。
+<span class="token operator">-</span>H <span class="token operator">--</span>with<span class="token operator">-</span>filename  # 在显示符合范本样式的那一列之前，标示该列的文件名称。
+<span class="token operator">-</span>i <span class="token operator">--</span>ignore<span class="token operator">-</span><span class="token keyword">case</span>    # 忽略字符大小写的差别。
+<span class="token operator">-</span>l <span class="token operator">--</span>file<span class="token operator">-</span>with<span class="token operator">-</span>matches   # 列出文件内容符合指定的范本样式的文件名称。
+<span class="token operator">-</span>L <span class="token operator">--</span>files<span class="token operator">-</span>without<span class="token operator">-</span>match # 列出文件内容不符合指定的范本样式的文件名称。
+<span class="token operator">-</span>n <span class="token operator">--</span>line<span class="token operator">-</span>number         # 在显示符合范本样式的那一列之前，标示出该列的编号。
+<span class="token operator">-</span>q <span class="token operator">--</span>quiet或<span class="token operator">--</span>silent     # 不显示任何信息。
+<span class="token operator">-</span>R<span class="token operator">/</span><span class="token operator">-</span>r  <span class="token operator">--</span>recursive       # 此参数的效果和指定“<span class="token operator">-</span>d recurse”参数相同。
+<span class="token operator">-</span>s <span class="token operator">--</span>no<span class="token operator">-</span>messages  # 不显示错误信息。
+<span class="token operator">-</span>v <span class="token operator">--</span>revert<span class="token operator">-</span>match # 反转查找。
+<span class="token operator">-</span>V <span class="token operator">--</span>version      # 显示版本信息。   
+<span class="token operator">-</span>w <span class="token operator">--</span>word<span class="token operator">-</span>regexp  # 只显示全字符合的列。
+<span class="token operator">-</span>x <span class="token operator">--</span>line<span class="token operator">-</span>regexp  # 只显示全列符合的列。
+<span class="token operator">-</span>y # 此参数效果跟“<span class="token operator">-</span>i”相同。
+<span class="token operator">-</span>o # 只输出文件中匹配到的部分。</code></pre>
+<h3 id="规则表达式">规则表达式</h3><pre><code class="language-bash"><span class="token operator">^</span>    # 锚定行的开始 如：<span class="token string">'^grep'</span>匹配所有以grep开头的行。    
+$    # 锚定行的结束 如：<span class="token string">'grep
 </div>
 
 <div class="footer ">
   收藏本站请使用Ctrl+D或者Command+d
   <br />
   <a target="_blank" href="https://github.com/jaywcjlove/linux-command/new/master/command">添加命令</a> |
-  <a href="hot.html">命令列表</a> |
+  <a href="../hot.html">命令列表</a> |
   <a href="https://github.com/jaywcjlove/oscnews">Chrome 插件</a>
   <br> 共搜集到
   <span id="commands_info">
@@ -212,7 +86,148 @@ b
 </div>
 <script>
 var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a542c0213a9aa8ae29fccdc8a18b91ef"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
-<script type="text/javascript" src="../js/dt.js?v=1532764392443"></script>
-<script type="text/javascript" src="../js/index.js?v=1532764392443"></script>
+<script type="text/javascript" src="../js/dt.js?v=1538882024314"></script>
+<script type="text/javascript" src="../js/index.js?v=1538882024314"></script>
+</body>
+</html></span>匹配所有以grep结尾的行。    
+<span class="token punctuation">.</span>    # 匹配一个非换行符的字符 如：<span class="token string">'gr.p'</span>匹配gr后接一个任意字符，然后是p。    
+<span class="token operator">*</span>    # 匹配零个或多个先前字符 如：<span class="token string">'*grep'</span>匹配所有一个或多个空格后紧跟grep的行。    
+<span class="token punctuation">.</span><span class="token operator">*</span>   # 一起用代表任意字符。   
+<span class="token punctuation">[</span><span class="token punctuation">]</span>   # 匹配一个指定范围内的字符，如<span class="token string">'[Gg]rep'</span>匹配Grep和grep。    
+<span class="token punctuation">[</span><span class="token operator">^</span><span class="token punctuation">]</span>  # 匹配一个不在指定范围内的字符，如：<span class="token string">'[^A-FH-Z]rep'</span>匹配不包含A<span class="token operator">-</span>R和T<span class="token operator">-</span>Z的一个字母开头，紧跟rep的行。    
+\<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span>\<span class="token punctuation">)</span>  # 标记匹配字符，如<span class="token string">'\(love\)'</span>，love被标记为<span class="token number">1</span>。    
+\<span class="token operator">&lt;</span>      # 锚定单词的开始，如<span class="token punctuation">:</span><span class="token string">'\&lt;grep'</span>匹配包含以grep开头的单词的行。    
+\<span class="token operator">></span>      # 锚定单词的结束，如<span class="token string">'grep\>'</span>匹配包含以grep结尾的单词的行。    
+x\<span class="token punctuation">{</span>m\<span class="token punctuation">}</span>  # 重复字符x，m次，如：<span class="token string">'0\{5\}'</span>匹配包含<span class="token number">5</span>个o的行。    
+x\<span class="token punctuation">{</span>m<span class="token punctuation">,</span>\<span class="token punctuation">}</span>   # 重复字符x<span class="token punctuation">,</span>至少m次，如：<span class="token string">'o\{5,\}'</span>匹配至少有<span class="token number">5</span>个o的行。    
+x\<span class="token punctuation">{</span>m<span class="token punctuation">,</span>n\<span class="token punctuation">}</span>  # 重复字符x，至少m次，不多于n次，如：<span class="token string">'o\{5,10\}'</span>匹配<span class="token number">5</span><span class="token operator">--</span><span class="token number">10</span>个o的行。   
+\w    # 匹配文字和数字字符，也就是<span class="token punctuation">[</span>A<span class="token operator">-</span>Za<span class="token operator">-</span>z0<span class="token operator">-</span><span class="token number">9</span><span class="token punctuation">]</span>，如：<span class="token string">'G\w*p'</span>匹配以G后跟零个或多个文字或数字字符，然后是p。   
+\W    # \w的反置形式，匹配一个或多个非单词字符，如点号句号等。   
+\b    # 单词锁定符，如<span class="token punctuation">:</span> <span class="token string">'\bgrep\b'</span>只匹配grep。  </code></pre>
+<h2 id="grep命令常见用法">grep命令常见用法</h2><p>在文件中搜索一个单词，命令会返回一个包含 <strong>“match_pattern”</strong> 的文本行：</p>
+<pre><code><span class="token function">grep</span> match_pattern file_name
+<span class="token function">grep</span> <span class="token string">"match_pattern"</span> file_name
+</code></pre><p>在多个文件中查找：</p>
+<pre><code><span class="token function">grep</span> <span class="token string">"match_pattern"</span> file_1 file_2 file_3 <span class="token punctuation">..</span>.
+</code></pre><p>输出除之外的所有行  <strong>-v</strong>  选项：</p>
+<pre><code><span class="token function">grep</span> -v <span class="token string">"match_pattern"</span> file_name
+</code></pre><p>标记匹配颜色  <strong>--color=auto</strong>  选项：</p>
+<pre><code><span class="token function">grep</span> <span class="token string">"match_pattern"</span> file_name --color<span class="token operator">=</span>auto
+</code></pre><p>使用正则表达式  <strong>-E</strong>  选项：</p>
+<pre><code><span class="token function">grep</span> -E <span class="token string">"[1-9]+"</span>
+或
+<span class="token function">egrep</span> <span class="token string">"[1-9]+"</span>
+</code></pre><p>只输出文件中匹配到的部分  <strong>-o</strong>  选项：</p>
+<pre><code><span class="token keyword">echo</span> this is a <span class="token function">test</span> line. <span class="token operator">|</span> <span class="token function">grep</span> -o -E <span class="token string">"[a-z]+\."</span>
+line.
+
+<span class="token keyword">echo</span> this is a <span class="token function">test</span> line. <span class="token operator">|</span> <span class="token function">egrep</span> -o <span class="token string">"[a-z]+\."</span>
+line.
+</code></pre><p>统计文件或者文本中包含匹配字符串的行数  <strong>-c</strong>  选项：</p>
+<pre><code><span class="token function">grep</span> -c <span class="token string">"text"</span> file_name
+</code></pre><p>输出包含匹配字符串的行数  <strong>-n</strong>  选项：</p>
+<pre><code><span class="token function">grep</span> <span class="token string">"text"</span> -n file_name
+或
+<span class="token function">cat</span> file_name <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">"text"</span> -n
+
+<span class="token comment">#多个文件</span>
+<span class="token function">grep</span> <span class="token string">"text"</span> -n file_1 file_2
+</code></pre><p>打印样式匹配所位于的字符或字节偏移：</p>
+<pre><code><span class="token keyword">echo</span> gun is not unix <span class="token operator">|</span> <span class="token function">grep</span> -b -o <span class="token string">"not"</span>
+7:not
+
+<span class="token comment">#一行中字符串的字符便宜是从该行的第一个字符开始计算，起始值为0。选项  **-b -o**  一般总是配合使用。</span>
+</code></pre><p>搜索多个文件并查找匹配文本在哪些文件中：</p>
+<pre><code><span class="token function">grep</span> -l <span class="token string">"text"</span> file1 file2 file3<span class="token punctuation">..</span>.
+</code></pre><h3 id="grep递归搜索文件">grep递归搜索文件</h3><p>在多级目录中对文本进行递归搜索：</p>
+<pre><code><span class="token function">grep</span> <span class="token string">"text"</span> <span class="token keyword">.</span> -r -n
+<span class="token comment"># .表示当前目录。</span>
+</code></pre><p>忽略匹配样式中的字符大小写：</p>
+<pre><code><span class="token keyword">echo</span> <span class="token string">"hello world"</span> <span class="token operator">|</span> <span class="token function">grep</span> -i <span class="token string">"HELLO"</span>
+hello
+</code></pre><p>选项  <strong>-e</strong>  制动多个匹配样式：</p>
+<pre><code><span class="token keyword">echo</span> this is a text line <span class="token operator">|</span> <span class="token function">grep</span> -e <span class="token string">"is"</span> -e <span class="token string">"line"</span> -o
+is
+line
+
+<span class="token comment">#也可以使用 **-f** 选项来匹配多个样式，在样式文件中逐行写出需要匹配的字符。</span>
+<span class="token function">cat</span> patfile
+aaa
+bbb
+
+<span class="token keyword">echo</span> aaa bbb ccc ddd eee <span class="token operator">|</span> <span class="token function">grep</span> -f patfile -o
+</code></pre><p>在grep搜索结果中包括或者排除指定文件：</p>
+<pre><code><span class="token comment">#只在目录中所有的.php和.html文件中递归搜索字符"main()"</span>
+<span class="token function">grep</span> <span class="token string">"main()"</span> <span class="token keyword">.</span> -r --include *.<span class="token punctuation">{</span>php,html<span class="token punctuation">}</span>
+
+<span class="token comment">#在搜索结果中排除所有README文件</span>
+<span class="token function">grep</span> <span class="token string">"main()"</span> <span class="token keyword">.</span> -r --exclude <span class="token string">"README"</span>
+
+<span class="token comment">#在搜索结果中排除filelist文件列表里的文件</span>
+<span class="token function">grep</span> <span class="token string">"main()"</span> <span class="token keyword">.</span> -r --exclude-from filelist
+</code></pre><p>使用0值字节后缀的grep与xargs：</p>
+<pre><code class="language-bash"># 测试文件：
+echo <span class="token string">"aaa"</span> <span class="token operator">></span> file1
+echo <span class="token string">"bbb"</span> <span class="token operator">></span> file2
+echo <span class="token string">"aaa"</span> <span class="token operator">></span> file3
+
+grep <span class="token string">"aaa"</span> file<span class="token operator">*</span> <span class="token operator">-</span>lZ <span class="token operator">|</span> xargs <span class="token operator">-</span><span class="token number">0</span> rm
+
+#执行后会删除file1和file3，grep输出用<span class="token operator">-</span>Z选项来指定以<span class="token number">0</span>值字节作为终结符文件名（\<span class="token number">0</span>），xargs <span class="token operator">-</span><span class="token number">0</span> 读取输入并用<span class="token number">0</span>值字节终结符分隔文件名，然后删除匹配文件，<span class="token operator">-</span>Z通常和<span class="token operator">-</span>l结合使用。
+</code></pre>
+<p>grep静默输出：</p>
+<pre><code class="language-bash">grep <span class="token operator">-</span>q <span class="token string">"test"</span> filename
+# 不会输出任何信息，如果命令运行成功返回<span class="token number">0</span>，失败则返回非<span class="token number">0</span>值。一般用于条件测试。</code></pre>
+<p>打印出匹配文本之前或者之后的行：</p>
+<pre><code class="language-bash"># 显示匹配某个结果之后的<span class="token number">3</span>行，使用 <span class="token operator">-</span>A 选项：
+seq <span class="token number">10</span> <span class="token operator">|</span> grep <span class="token string">"5"</span> <span class="token operator">-</span>A <span class="token number">3</span>
+<span class="token number">5</span>
+<span class="token number">6</span>
+<span class="token number">7</span>
+<span class="token number">8</span>
+
+# 显示匹配某个结果之前的<span class="token number">3</span>行，使用 <span class="token operator">-</span>B 选项：
+seq <span class="token number">10</span> <span class="token operator">|</span> grep <span class="token string">"5"</span> <span class="token operator">-</span>B <span class="token number">3</span>
+<span class="token number">2</span>
+<span class="token number">3</span>
+<span class="token number">4</span>
+<span class="token number">5</span>
+
+# 显示匹配某个结果的前三行和后三行，使用 <span class="token operator">-</span>C 选项：
+seq <span class="token number">10</span> <span class="token operator">|</span> grep <span class="token string">"5"</span> <span class="token operator">-</span>C <span class="token number">3</span>
+<span class="token number">2</span>
+<span class="token number">3</span>
+<span class="token number">4</span>
+<span class="token number">5</span>
+<span class="token number">6</span>
+<span class="token number">7</span>
+<span class="token number">8</span>
+
+# 如果匹配结果有多个，会用“<span class="token operator">--</span>”作为各匹配结果之间的分隔符：
+echo <span class="token operator">-</span>e <span class="token string">"a\nb\nc\na\nb\nc"</span> <span class="token operator">|</span> grep a <span class="token operator">-</span>A <span class="token number">1</span>
+a
+b
+<span class="token operator">--</span>
+a
+b</code></pre>
+<!-- Linux命令行搜索引擎：https://jaywcjlove.github.io/linux-command/ -->
+
+</div>
+
+<div class="footer ">
+  收藏本站请使用Ctrl+D或者Command+d
+  <br />
+  <a target="_blank" href="https://github.com/jaywcjlove/linux-command/new/master/command">添加命令</a> |
+  <a href="../hot.html">命令列表</a> |
+  <a href="https://github.com/jaywcjlove/oscnews">Chrome 插件</a>
+  <br> 共搜集到
+  <span id="commands_info">
+    553
+  </span> 个Linux命令
+</div>
+<script>
+var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a542c0213a9aa8ae29fccdc8a18b91ef"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
+<script type="text/javascript" src="../js/dt.js?v=1538882024314"></script>
+<script type="text/javascript" src="../js/index.js?v=1538882024314"></script>
 </body>
 </html>
