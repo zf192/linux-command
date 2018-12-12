@@ -10,7 +10,7 @@
     <meta name="keywords" content="Linux,Command,命令大全,Linux命令手册,tar,Linux下的归档使用工具，用来打包和备份。">
     <title>tar 命令，Linux tar 命令详解：Linux下的归档使用工具，用来打包和备份。 -  Linux 命令搜索引擎</title>
     <link rel="shortcut icon" href="../img/favicon.ico">
-    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1540889625649">
+    <link rel="stylesheet" type="text/css" href="../css/index.css?v=1544614418525">
 </head>
 <body>
 <a href="https://github.com/jaywcjlove/linux-command" target="_blank" class="github-corner"> <svg viewBox="0 0 250 250"><!-- kenny wang <wowohoo@qq.com> https://github.com/jaywcjlove --> <title>logo</title> <desc>Linux Command Logo. https://github.com/jaywcjlove</desc><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg> </a>
@@ -117,6 +117,9 @@ Main-class: the_name_of_the_main_class_should_be_put_here</code></pre><p>然后�
 <pre><code><span class="token function">tar</span> -cvf log.tar log2012.log    仅打包，不压缩！
 <span class="token function">tar</span> -zcvf log.tar.gz log2012.log   打包后，以 <span class="token function">gzip</span> 压缩
 <span class="token function">tar</span> -jcvf log.tar.bz2 log2012.log  打包后，以 <span class="token function">bzip2</span> 压缩</code></pre><p>在选项<code>f</code>之后的文件档名是自己取的，我们习惯上都用 .tar 来作为辨识。 如果加<code>z</code>选项，则以.tar.gz或.tgz来代表gzip压缩过的tar包；如果加<code>j</code>选项，则以.tar.bz2来作为tar包名。</p>
+<p><strong>解压目录</strong></p>
+<p>去掉第一层目录结构，要出除第二层，--strip-components 2</p>
+<pre><code class="language-bash">tar <span class="token operator">-</span>xvf portal<span class="token operator">-</span>web<span class="token operator">-</span>v2<span class="token punctuation">.</span><span class="token number">0.0</span><span class="token punctuation">.</span>tar <span class="token operator">--</span>strip<span class="token operator">-</span>components <span class="token number">1</span>  <span class="token operator">-</span>C 指定目录</code></pre>
 <p><strong>查阅上述tar包内有哪些文件</strong> ：</p>
 <pre><code><span class="token function">tar</span> -ztvf log.tar.gz</code></pre><p>由于我们使用 gzip 压缩的log.tar.gz，所以要查阅log.tar.gz包内的文件时，就得要加上<code>z</code>这个选项了。</p>
 <p><strong>将tar包解压缩</strong> ：</p>
@@ -152,7 +155,7 @@ Main-class: the_name_of_the_main_class_should_be_put_here</code></pre><p>然后�
 </div>
 <script>
 var _hmt = _hmt || []; (function() {var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?a542c0213a9aa8ae29fccdc8a18b91ef"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script>
-<script type="text/javascript" src="../js/dt.js?v=1540889625651"></script>
-<script type="text/javascript" src="../js/index.js?v=1540889625651"></script>
+<script type="text/javascript" src="../js/dt.js?v=1544614418526"></script>
+<script type="text/javascript" src="../js/index.js?v=1544614418526"></script>
 </body>
 </html>
